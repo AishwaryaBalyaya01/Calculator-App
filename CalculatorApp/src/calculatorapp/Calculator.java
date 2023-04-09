@@ -23,7 +23,7 @@ public class Calculator extends javax.swing.JFrame {
     public void enable(){
         jTextField1.setEnabled(true);
         
-        jRadioButton1.setEnabled(true);  //OFF button disable
+        jRadioButton1.setEnabled(true);  //OFF button enable
         jRadioButton2.setEnabled(false); //ON button disable
         
         jButton1.setEnabled(true);
@@ -139,6 +139,11 @@ public class Calculator extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton1.setText("<--");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton2.setText("C");
@@ -376,7 +381,7 @@ public class Calculator extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        jTextField1.setText(jTextField1.getText() +"+");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -450,6 +455,23 @@ public class Calculator extends javax.swing.JFrame {
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         enable();
     }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int length = jTextField1.getText().length();
+        int number = jTextField1.getText().length()-1;
+        
+        String store;
+        if(length>0){
+            StringBuilder delete = new StringBuilder(jTextField1.getText());
+            delete.deleteCharAt(number);
+            store = delete.toString();
+            jTextField1.setText(store);
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
